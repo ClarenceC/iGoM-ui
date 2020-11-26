@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 
 module.exports = {
@@ -21,7 +22,11 @@ module.exports = {
         test: /\.(css|less)$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          // 'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          // 'css-loader',
           {
             loader: 'css-loader',
             options: {
@@ -38,6 +43,9 @@ module.exports = {
       title: 'iGoM-ui',
       filename: 'index.html',
       template: path.resolve(process.cwd(), '/site/template/index.html')
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name]/[name].css'
     })
   ]
 }

@@ -1,4 +1,5 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: path.resolve(process.cwd(), '/packages/index.js'),
@@ -8,6 +9,8 @@ module.exports = {
     library: 'iGoM-ui',
     libraryTarget: 'umd'
   },
+  mode: 'development',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -32,5 +35,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
+  ]
 }

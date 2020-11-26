@@ -1,5 +1,7 @@
 import Button from './Button'
+import SexRadio from './SexRadio'
 
 export {
-  Button
+  Button,
+  SexRadio
 }
